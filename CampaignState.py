@@ -32,6 +32,8 @@ class CampaignState:
     # Session info
     turn_count: int = 0
     scenes_generated: int = 0
+    # Pending roll/check awaiting player to type "roll"
+    pending_check: dict = None
     
     def add_story_beat(self, beat: str):
         """Track major story progression"""
@@ -52,6 +54,18 @@ class CampaignState:
         self.scenes_visited.append(self.current_scene.id)
         self.current_scene = new_scene
         self.scenes_generated += 1
+
+    def set_pending_check(self, action: str, ability: str, dc: int):
+        """Register a pending mechanical check that the player must 'roll' to resolve."""
+        self.pending_check = {
+            'action': action,
+            'ability': ability,
+            'dc': dc,
+            'turn': self.turn_count,
+        }
+
+    def clear_pending_check(self):
+        self.pending_check = None
         
     def to_context(self) -> str:
         """Generate context for LLM"""

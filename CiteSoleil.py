@@ -3,27 +3,12 @@ D&D AI DM Backend - LangChain Powered Campaign Engine
 Handles dynamic state management, scene transitions, and narrative generation
 """
 import os
-
-from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass, field
-from enum import Enum
-import json
-from datetime import datetime
-
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain.memory import ConversationBufferMemory
-from langchain.schema import SystemMessage, HumanMessage, AIMessage
-from langchain.callbacks.base import BaseCallbackHandler
 from DungeonMasterAgent import DungeonMasterAgent
+from Player import Character
+from Party import PartyMember
 
 from dotenv import load_dotenv
 load_dotenv()
-from Player import Character
-from CampaignState import CampaignState
-from SceneManager import SceneManager, SceneType,Scene 
-from Party import PartyMember
-from ToneAnalyzer import ToneAnalyzer, ToneType 
 
 
 def main():
@@ -36,7 +21,7 @@ def main():
         char_class="Paladin",
         level=3,
         background="Noble",
-        alignment="Lawful Good",
+        alignment="Lawful Evil",
         stats={'str': 16, 'dex': 10, 'con': 14, 'int': 10, 'wis': 12, 'cha': 15},
         backstory="A knight seeking redemption for a past failure.",
         hp_current=28,
@@ -76,7 +61,7 @@ def main():
         party_members=party
     )
     
-    print("=== CAMPAIGN START ===")
+    print("\n\n\n\n\n=== CAMPAIGN START ===")
     print(opening)
     print(f"\n[Scene Generated: {state.current_scene.sora_prompt}]")
     

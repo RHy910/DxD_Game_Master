@@ -6,12 +6,6 @@ from datetime import datetime
 from typing import Optional, List
 from enum import Enum
 
-
-
-
-
-
-
 class SceneType(Enum):
     """Types of scenes for Sora generation"""
     EXPLORATION = "exploration"

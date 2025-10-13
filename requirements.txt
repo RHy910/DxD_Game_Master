@@ -1,0 +1,7 @@
+langchain
+openai
+python-dotenv
+pyttsx3
+# Optional (not required by default):
+# - For cloud TTS providers or higher-quality voices, add relevant SDKs (boto3, google-cloud-texttospeech, azure-cognitiveservices-speech)
+# - For Sora/video integration, add the Sora SDK when available
